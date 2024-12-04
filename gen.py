@@ -5,14 +5,14 @@ import os
 import time
 from colorama import Fore, Style, init
 
-# Initialisation de colorama pour Windows
+
 init(autoreset=True)
 
-# Fonction pour générer un code Nitro aléatoire
+
 def generate_nitro_code():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
 
-# Fonction pour vérifier la validité d'un code avec gestion des erreurs
+
 def check_nitro_code(code):
     url = f"https://discord.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true"
     try:
@@ -24,15 +24,15 @@ def check_nitro_code(code):
     except requests.exceptions.RequestException:
         return False
 
-# Fonction pour écrire un code Nitro valide dans un fichier
+
 def write_valid_code(code):
     with open("valid.txt", "a") as f:
         f.write(f"https://discord.gift/{code}\n")
     print(f"{Fore.GREEN}[VALID] https://discord.gift/{code} {Style.RESET_ALL}")
 
-# Menu principal
+
 def main():
-    os.system('cls' if os.name == 'nt' else 'clear')  # Effacer la console
+    os.system('cls' if os.name == 'nt' else 'clear') 
 
     print(Fore.RED + """
                                     /$$ /$$                   /$$              /$$                          
